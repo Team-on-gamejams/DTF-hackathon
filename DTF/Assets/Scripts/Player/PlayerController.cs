@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Mirror.Examples.NetworkRoom {
 	[RequireComponent(typeof(CharacterController))]
 	public class PlayerController : NetworkBehaviour {
-		[SyncVar] [NonSerialized]public int index;
+		[SyncVar] [NonSerialized] public int index;
 
 		[Header("Movement Settings")]
 		[SerializeField] float moveSpeed = 8f;
@@ -16,6 +16,9 @@ namespace Mirror.Examples.NetworkRoom {
 
 		[Header("Unity refs")]
 		[SerializeField] CharacterController characterController;
+		[SerializeField] GameObject rightHand;
+		[SerializeField] GameObject leftHand;
+		[SerializeField] GameObject cometPrefab;
 		Camera mainCamera;
 
 		void Update() {
@@ -37,7 +40,7 @@ namespace Mirror.Examples.NetworkRoom {
 			
 			if (Input.GetMouseButtonDown(0)) {
 				Vector3 clickPos = new Vector3(floorHit.point.x, transform.position.y, floorHit.point.z);
-				Debug.DrawLine(transform.position, clickPos, Color.red, 5.0f);
+				
 			}
 		}
 
