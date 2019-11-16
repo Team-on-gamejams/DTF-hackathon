@@ -25,13 +25,14 @@ public class Health : NetworkBehaviour {
 
 	void ChangeHpCurrFill(int newVal) {
 		healthCurr = newVal;
+
 		if(hpFill)
 			hpFill.fillAmount = (float)(healthCurr) / healthMax;
 
 		 if (healthCurr <= 0) {
-			Attacker attacker = GetComponent<Attacker>();
-			if (attacker) {
-				attacker.OnAttack();
+			Attacker attackerThis = GetComponent<Attacker>();
+			if (attackerThis) {
+				attackerThis.OnCollideWithHealth();
 			}
 			else {
 				NetworkServer.Destroy(gameObject);
@@ -42,7 +43,7 @@ public class Health : NetworkBehaviour {
 	public void GetGamage(Attacker attacker) {
 		if (attacker.isCanDamage) {
 			healthCurr -= attacker.damage;
-			attacker.OnAttack();
+			attacker.OnCollideWithHealth();
 		}
 	}
 

@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serverOnly: 0
-  m_AssetId: fb92dbb6041cc7a4894aaf4ba1705ce1
-  m_SceneId: 0
+  m_AssetId: 
+  m_SceneId: 229476353
 --- !u!114 &3117931201857343574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,8 +154,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  isDoDamage: 1
+  isCanDamage: 1
   damage: 10
+  speed: 10
+  moveToPosAccurasity: 0.25
+  maxMoveDistance: 20
 --- !u!114 &5496281207327139248
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -92,6 +92,7 @@ public class PlayerController : NetworkBehaviour {
 
 	[Command]
 	void CmdReleaseMagicPrefab(bool isLeft, Vector3 releasePos) {
+		rightHandMagic.GetComponent<Attacker>().OnReleaseMouse(releasePos);
 		rightHandMagic = null;
 	}
 }
