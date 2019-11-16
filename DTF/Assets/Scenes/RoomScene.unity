@@ -279,7 +279,7 @@ MonoBehaviour:
   startOnHeadless: 1
   serverTickRate: 30
   showDebugMessages: 0
-  offlineScene: 
+  offlineScene: OfflineScene
   onlineScene: 
   transport: {fileID: 2008127830}
   networkAddress: localhost
