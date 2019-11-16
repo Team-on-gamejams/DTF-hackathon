@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Mirror;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Health : NetworkBehaviour {
+	[SyncVar] [NonSerialized] public int playerIndex;
 	[SyncVar(hook = nameof(ChangeHpMaxFill))] public int healthMax;
 	[SyncVar(hook = nameof(ChangeHpCurrFill))] public int healthCurr;
 
@@ -16,24 +18,39 @@ public class Health : NetworkBehaviour {
 	}
 
 	void ChangeHpMaxFill(int newVal) {
-		hpFill.fillAmount = (float)(healthCurr) / (healthMax = newVal);
+		healthMax = newVal;
+		if(hpFill)
+			hpFill.fillAmount = (float)(healthCurr) / healthMax;
 	}
 
 	void ChangeHpCurrFill(int newVal) {
-		hpFill.fillAmount = (float)((healthCurr = newVal)) / healthMax;
+		healthCurr = newVal;
+		if(hpFill)
+			hpFill.fillAmount = (float)(healthCurr) / healthMax;
+
+		 if (healthCurr <= 0) {
+			Attacker attacker = GetComponent<Attacker>();
+			if (attacker) {
+				attacker.OnAttack();
+			}
+			else {
+				NetworkServer.Destroy(gameObject);
+			}
+		}
 	}
 
 	public void GetGamage(Attacker attacker) {
-		if (attacker.isDoDamage) {
+		if (attacker.isCanDamage) {
 			healthCurr -= attacker.damage;
-			attacker.RpcOnAttack();
+			attacker.OnAttack();
 		}
 	}
 
 	private void OnTriggerEnter(Collider other) {
 		if (isServer && other.gameObject.tag == "Attacker") {
 			Attacker attacker = other.gameObject.GetComponent<Attacker>();
-			GetGamage(attacker);
+			if(attacker.playerIndex != playerIndex)
+				GetGamage(attacker);
 		}
 	}
 }
