@@ -35,7 +35,7 @@ namespace UnityToolbarExtender {
 			var screenWidth = EditorGUIUtility.currentViewWidth;
 
 			// Following calculations match code reflected from Toolbar.OldOnGUI()
-			float playButtonsPosition = (screenWidth - 125) / 2;
+			float playButtonsPosition = (screenWidth - 140) / 2;
 
 			Rect leftRect = new Rect(0, 0, screenWidth, Screen.height);
 			leftRect.xMin += 10; // Spacing left
