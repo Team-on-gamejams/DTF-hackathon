@@ -7,7 +7,7 @@ using UnityEngine.Experimental.VFX;
 
 public class Attacker : NetworkBehaviour {
 	[SyncVar] public bool isCanDamage = true;
-	[SyncVar] [NonSerialized] public int playerIndex;
+	[SyncVar] [NonSerialized] public int playerIndex = -1;
 	public int damage = 10;
 
 	[SerializeField] protected VisualEffect visualEffect;

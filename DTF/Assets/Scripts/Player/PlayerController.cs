@@ -4,7 +4,7 @@ using Mirror;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : NetworkBehaviour {
-	[SyncVar] [NonSerialized] public int index;
+	[SyncVar] [NonSerialized] public int index = -1;
 
 	[Header("Movement Settings")]
 	[SerializeField] float moveSpeed = 8f;

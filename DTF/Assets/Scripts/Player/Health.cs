@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Health : NetworkBehaviour {
-	[SyncVar] [NonSerialized] public int playerIndex;
+	[SyncVar] [NonSerialized] public int playerIndex = -1;
 	[SyncVar(hook = nameof(ChangeHpMaxFill))] public int healthMax;
 	[SyncVar(hook = nameof(ChangeHpCurrFill))] public int healthCurr;
 
