@@ -47,11 +47,19 @@ public class Health : NetworkBehaviour {
 		}
 	}
 
+	private void OnCollisionEnter(Collision collision) {
+		if (isServer && collision.gameObject.tag == "Attacker")
+			OnCollisionWithAttack(collision.gameObject);
+	}
+
 	private void OnTriggerEnter(Collider other) {
-		if (isServer && other.gameObject.tag == "Attacker") {
-			Attacker attacker = other.gameObject.GetComponent<Attacker>();
-			if(attacker.playerIndex != playerIndex)
-				GetGamage(attacker);
-		}
+		if (isServer && other.gameObject.tag == "Attacker") 
+			OnCollisionWithAttack(other.gameObject);
+	}
+
+	void OnCollisionWithAttack(GameObject attackGo) {
+		Attacker attacker = attackGo.gameObject.GetComponent<Attacker>();
+		if (attacker.playerIndex != playerIndex)
+			GetGamage(attacker);
 	}
 }

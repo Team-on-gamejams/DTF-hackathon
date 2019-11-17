@@ -125,6 +125,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   isCanDamage: 1
+  delayBeforeDestroy: 3
   damage: 10
   visualEffect: {fileID: 3117931201857343530}
   holdTimeMax: 10
