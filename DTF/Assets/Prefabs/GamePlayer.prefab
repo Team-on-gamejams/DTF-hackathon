@@ -61,6 +61,8 @@ MonoBehaviour:
   leftHand: {fileID: 5347111665075176940}
   cometPrefab: {fileID: 3117931201857343535, guid: fb92dbb6041cc7a4894aaf4ba1705ce1,
     type: 3}
+  shieldPrefab: {fileID: 3117931201857343535, guid: 44db1d67edc4f4f4c95ddb264796edec,
+    type: 3}
 --- !u!114 &779344825559064760
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,6 +19,7 @@ public class PlayerController : NetworkBehaviour {
 	[SerializeField] GameObject rightHand;
 	[SerializeField] GameObject leftHand;
 	[SerializeField] GameObject cometPrefab;
+	[SerializeField] GameObject shieldPrefab;
 	Camera mainCamera;
 	GameObject rightHandMagic;
 	GameObject leftHandMagic;
@@ -40,13 +41,18 @@ public class PlayerController : NetworkBehaviour {
 			transform.rotation = Quaternion.LookRotation(playerToMouse);
 		}
 
-		if (Input.GetMouseButtonDown(0)) {
+		if (Input.GetMouseButtonDown(0)) 
 			CmdSpawnMagicPrefab(false);
-		}
+		if (Input.GetMouseButtonDown(1)) 
+			CmdSpawnMagicPrefab(true);
 
 		if (Input.GetMouseButtonUp(0)) {
 			Vector3 clickPos = new Vector3(floorHit.point.x, transform.position.y, floorHit.point.z);
 			CmdReleaseMagicPrefab(false, clickPos);
+		}
+		if (Input.GetMouseButtonUp(1)) {
+			Vector3 clickPos = new Vector3(floorHit.point.x, transform.position.y, floorHit.point.z);
+			CmdReleaseMagicPrefab(true, clickPos);
 		}
 	}
 
@@ -55,6 +61,11 @@ public class PlayerController : NetworkBehaviour {
 			rightHandMagic.transform.position = rightHand.transform.position;
 		if (leftHandMagic)
 			leftHandMagic.transform.position = leftHand.transform.position;
+
+		if (rightHandMagic) 
+			rightHandMagic.transform.rotation = transform.rotation;
+		if (leftHandMagic) 
+			leftHandMagic.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, -90, 0));
 
 		if (!isLocalPlayer)
 			return;
@@ -79,20 +90,30 @@ public class PlayerController : NetworkBehaviour {
 
 	[Command]
 	void CmdSpawnMagicPrefab(bool isLeft) {
-		rightHandMagic = Instantiate(cometPrefab, rightHand.transform.position, Quaternion.identity);
+		if(isLeft)
+			leftHandMagic = Instantiate(shieldPrefab, leftHand.transform.position, Quaternion.identity);
+		else
+			rightHandMagic = Instantiate(cometPrefab, rightHand.transform.position, Quaternion.identity);
+		GameObject handMagic = isLeft ? leftHandMagic : rightHandMagic;
 
-		Attacker attacker = rightHandMagic.GetComponent<Attacker>();
+		Attacker attacker = handMagic.GetComponent<Attacker>();
 		attacker.playerIndex = index;
 
-		Health health = rightHandMagic.GetComponent<Health>();
+		Health health = handMagic.GetComponent<Health>();
 		health.playerIndex = index;
 
-		NetworkServer.Spawn(rightHandMagic);
+		NetworkServer.Spawn(handMagic);
 	}
 
 	[Command]
 	void CmdReleaseMagicPrefab(bool isLeft, Vector3 releasePos) {
-		rightHandMagic.GetComponent<Attacker>().OnReleaseMouse(releasePos);
-		rightHandMagic = null;
+		if (isLeft) {
+			leftHandMagic.GetComponent<Attacker>().OnReleaseMouse(releasePos);
+			leftHandMagic = null;
+		}
+		else {
+			rightHandMagic.GetComponent<Attacker>().OnReleaseMouse(releasePos);
+			rightHandMagic = null;
+		}
 	}
 }
