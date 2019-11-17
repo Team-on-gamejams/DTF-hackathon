@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 3117931201857343528}
   - component: {fileID: 3117931201857343530}
   - component: {fileID: 3117931201857343529}
+  - component: {fileID: 4937726205730522718}
+  - component: {fileID: 5496281207327139248}
   - component: {fileID: 3117931201857343572}
   - component: {fileID: 3117931201857343574}
-  - component: {fileID: 3117931201857343531}
-  - component: {fileID: 5496281207327139248}
   - component: {fileID: 3117931201857343573}
   - component: {fileID: 3691087893151513917}
   m_Layer: 0
-  m_Name: Comet
+  m_Name: Fireball
   m_TagString: Attacker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,6 +110,53 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &4937726205730522718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3117931201857343535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42dacd4f9087f794f8ea468adc6aa7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  isCanDamage: 1
+  damage: 10
+  visualEffect: {fileID: 3117931201857343530}
+  holdTimeMax: 10
+  sizeMin: 0.1
+  sizeMax: 2
+  spawnRateMin: 150
+  spawnRateMax: 3000
+  speedMin: 20
+  speedMax: 5
+  moveDistanceMin: 20
+  moveDistanceMax: 5
+  damageMin: 5
+  damageMax: 50
+  moveToPosAccurasity: 0.25
+  collider: {fileID: 3117931201857343573}
+--- !u!114 &5496281207327139248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3117931201857343535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b1d3f136bdcf140a7c883cb41c4a2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  healthMax: 1
+  healthCurr: 0
+  hpFill: {fileID: 0}
 --- !u!114 &3117931201857343572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,8 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serverOnly: 0
-  m_AssetId: 
-  m_SceneId: 229476353
+  m_AssetId: fb92dbb6041cc7a4894aaf4ba1705ce1
+  m_SceneId: 0
 --- !u!114 &3117931201857343574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,42 +187,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   compressRotation: 1
---- !u!114 &3117931201857343531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3117931201857343535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21bebb34371e97347902ae9ced4ae7d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  isCanDamage: 1
-  damage: 10
-  speed: 10
-  moveToPosAccurasity: 0.25
-  maxMoveDistance: 20
---- !u!114 &5496281207327139248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3117931201857343535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94b1d3f136bdcf140a7c883cb41c4a2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  healthMax: 10
-  healthCurr: 0
-  hpFill: {fileID: 0}
 --- !u!135 &3117931201857343573
 SphereCollider:
   m_ObjectHideFlags: 0

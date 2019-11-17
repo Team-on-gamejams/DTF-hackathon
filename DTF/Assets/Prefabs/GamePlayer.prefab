@@ -59,8 +59,6 @@ MonoBehaviour:
   characterController: {fileID: 143011667059871024}
   rightHand: {fileID: 8600308414268471303}
   leftHand: {fileID: 5347111665075176940}
-  rightHandMagic: {fileID: 0}
-  leftHandMagic: {fileID: 0}
   cometPrefab: {fileID: 3117931201857343535, guid: fb92dbb6041cc7a4894aaf4ba1705ce1,
     type: 3}
 --- !u!114 &779344825559064760
