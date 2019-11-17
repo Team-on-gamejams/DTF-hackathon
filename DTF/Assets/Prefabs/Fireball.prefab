@@ -125,8 +125,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   isCanDamage: 1
-  delayBeforeDestroy: 3
   damage: 10
+  delayBeforeDestroy: 3
   visualEffect: {fileID: 3117931201857343530}
   holdTimeMax: 10
   sizeMin: 0.1
@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serverOnly: 0
-  m_AssetId: fb92dbb6041cc7a4894aaf4ba1705ce1
-  m_SceneId: 0
+  m_AssetId: 
+  m_SceneId: 2232718224
 --- !u!114 &3117931201857343574
 MonoBehaviour:
   m_ObjectHideFlags: 0

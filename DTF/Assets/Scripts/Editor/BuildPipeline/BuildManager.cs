@@ -78,9 +78,9 @@ public static class BuildManager {
 		buildsPath = new List<string>(5);
 		buildsPath.Add(BuildWindows(true));
 		buildsPath.Add(BuildWindowsX64(true));
-		buildsPath.Add(BuildLinux(true));
-		buildsPath.Add(BuildOSX(true));
-		buildsPath.Add(BuildWeb(true));
+		//buildsPath.Add(BuildLinux(true));  // Not supported by HDRPR
+		//buildsPath.Add(BuildOSX(true));	 // Not supported by HDRPR
+		//buildsPath.Add(BuildWeb(true));	// Not supported by HDRPR
 
 		EditorUserBuildSettings.SwitchActiveBuildTarget(targetGroupBeforeStart, targetBeforeStart);
 		Debug.Log($"End building all. Elapsed time: {string.Format("{0:mm\\:ss}", DateTime.Now - startTime)}");
